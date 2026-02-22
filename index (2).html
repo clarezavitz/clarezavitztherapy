@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clare Zavitz Therapy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#E8EDE3;
+  --warm:#D0DBCB;
+  --sage:#4A6E52;
+  --sage-lt:#7A9E82;
+  --stone:#3A4F3C;
+  --bark:#1E2E21;
+  --mist:#A8BFAB;
+  --accent:#3D6647;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--bark);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(232,237,227,0.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(74,110,82,0.15)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.3rem;letter-spacing:0.04em;color:var(--bark);text-decoration:none}
+.nav-links{display:flex;gap:2.4rem;list-style:none}
+.nav-links a{text-decoration:none;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);transition:color 0.2s;font-weight:400}
+.nav-links a:hover{color:var(--accent)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--bark)}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--cream);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;transform:translateX(100%);transition:transform 0.35s ease}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--bark);text-decoration:none}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;font-size:1.8rem;color:var(--stone);cursor:pointer}
+
+/* HERO */
+#hero{min-height:100vh;padding:80px 3rem 0;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;overflow:hidden}
+.hero-bg-circle{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--sage-lt) 0%,transparent 70%);opacity:0.2;top:-100px;right:-100px;pointer-events:none}
+.hero-bg-circle2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,var(--warm) 0%,transparent 70%);opacity:0.7;bottom:0;left:-80px;pointer-events:none}
+.hero-text{position:relative;z-index:2}
+.hero-eyebrow{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);margin-bottom:1.2rem;font-weight:400}
+.hero-text h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:300;line-height:1.15;color:var(--bark);margin-bottom:1.5rem}
+.hero-text h1 em{font-style:italic;color:var(--sage)}
+.hero-text p{font-size:1rem;color:var(--stone);max-width:420px;margin-bottom:2.4rem;line-height:1.8}
+.btn-primary{display:inline-block;padding:0.85rem 2.2rem;background:var(--bark);color:var(--cream);text-decoration:none;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:400;border-radius:50px;transition:background 0.25s,transform 0.2s}
+.btn-primary:hover{background:var(--accent);transform:translateY(-2px)}
+.btn-secondary{display:inline-block;margin-left:1.2rem;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;border-bottom:1px solid var(--mist);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;font-weight:400}
+.btn-secondary:hover{color:var(--accent);border-color:var(--accent)}
+
+/* HEADSHOT */
+.hero-image-wrap{position:relative;z-index:2;display:flex;justify-content:center;align-items:center}
+.headshot-frame{width:400px;height:500px;border-radius:200px 200px 160px 160px;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(30,46,33,0.16)}
+.headshot-frame img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.headshot-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--warm) 0%,var(--mist) 100%);gap:0.8rem}
+.headshot-placeholder svg{opacity:0.3}
+.headshot-placeholder span{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--stone);opacity:0.7}
+.headshot-deco{position:absolute;width:120px;height:120px;border-radius:50%;border:1.5px solid var(--sage-lt);top:-20px;right:-20px}
+.headshot-deco2{position:absolute;width:80px;height:80px;border-radius:50%;background:var(--sage-lt);opacity:0.2;bottom:30px;left:-30px}
+.credentials-badge{position:absolute;bottom:-20px;right:20px;background:white;border-radius:14px;padding:0.9rem 1.3rem;box-shadow:0 10px 40px rgba(30,46,33,0.14);display:flex;align-items:center;gap:0.8rem}
+.badge-dot{width:10px;height:10px;border-radius:50%;background:var(--sage)}
+.badge-text{font-size:0.78rem;color:var(--stone);line-height:1.4}
+.badge-text strong{display:block;color:var(--bark);font-weight:500;font-size:0.85rem}
+
+/* SHARED */
+section{scroll-margin-top:80px}
+.section-inner{max-width:1080px;margin:0 auto;padding:6rem 3rem}
+.section-label{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--sage);margin-bottom:0.8rem;font-weight:400}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.2;color:var(--bark);margin-bottom:1.8rem}
+.section-title em{font-style:italic;color:var(--sage)}
+.divider{width:48px;height:1.5px;background:var(--sage-lt);margin-bottom:2.5rem}
+
+/* ABOUT */
+#about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-body p{color:var(--stone);margin-bottom:1.3rem;line-height:1.9;font-size:0.97rem}
+.about-values{display:flex;flex-direction:column;gap:1.5rem}
+.value-item{display:flex;gap:1rem;align-items:flex-start}
+.value-icon{width:38px;height:38px;min-width:38px;border-radius:10px;background:var(--warm);display:flex;align-items:center;justify-content:center;margin-top:2px}
+.value-item h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:500;color:var(--bark);margin-bottom:0.2rem}
+.value-item p{font-size:0.88rem;color:var(--stone);margin:0;line-height:1.6}
+
+/* SERVICES */
+#services{background:var(--warm)}
+.services-intro{max-width:600px;margin-bottom:3.5rem}
+.services-intro p{color:var(--stone);line-height:1.9;font-size:0.97rem}
+.specialties-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;margin-bottom:3.5rem}
+.specialty-card{background:var(--cream);border-radius:18px;padding:1.6rem;transition:transform 0.2s,box-shadow 0.2s;border:1px solid rgba(74,110,82,0.12)}
+.specialty-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(30,46,33,0.1)}
+.specialty-icon{width:40px;height:40px;background:var(--warm);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:0.8rem}
+.specialty-card h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem}
+.specialty-card p{font-size:0.84rem;color:var(--stone);line-height:1.65}
+.what-to-expect{background:var(--cream);border-radius:24px;padding:2.5rem 3rem;border:1px solid var(--mist)}
+.what-to-expect h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--bark);margin-bottom:1.5rem}
+.expect-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem}
+.step{display:flex;gap:1rem;align-items:flex-start}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--sage-lt);line-height:1;min-width:32px}
+.step-body h4{font-size:0.88rem;font-weight:500;color:var(--bark);margin-bottom:0.2rem}
+.step-body p{font-size:0.82rem;color:var(--stone);line-height:1.6}
+
+/* RATES */
+#rates{background:var(--cream)}
+.rates-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start}
+.rate-card{background:var(--bark);color:var(--cream);border-radius:24px;padding:2.5rem;position:relative;overflow:hidden}
+.rate-card-deco{position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(122,158,130,0.12);bottom:-40px;right:-40px}
+.rate-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.5rem;color:var(--sage-lt);letter-spacing:0.05em}
+.rate-price{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;line-height:1;margin-bottom:0.3rem}
+.rate-price sup{font-size:1.5rem;vertical-align:super}
+.rate-unit{font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);margin-bottom:1.8rem}
+.rate-features{list-style:none;display:flex;flex-direction:column;gap:0.7rem;position:relative;z-index:1}
+.rate-features li{font-size:0.88rem;color:var(--mist);display:flex;align-items:center;gap:0.7rem}
+.rate-features li::before{content:'';width:6px;height:6px;min-width:6px;border-radius:50%;background:var(--sage-lt)}
+.rates-info{display:flex;flex-direction:column;gap:1.5rem}
+.info-block{background:var(--warm);border-radius:18px;padding:1.5rem 1.8rem;border-left:3px solid var(--sage-lt)}
+.info-block h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--bark);margin-bottom:0.4rem}
+.info-block p{font-size:0.88rem;color:var(--stone);line-height:1.7}
+
+/* FAQ */
+#faq{background:var(--warm)}
+.faq-grid{max-width:720px}
+.faq-item{border-bottom:1px solid var(--mist);padding:1.4rem 0}
+.faq-question{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--bark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;user-select:none}
+.faq-toggle{width:26px;height:26px;min-width:26px;border-radius:50%;border:1px solid var(--mist);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--sage);transition:background 0.2s,transform 0.2s}
+.faq-item.open .faq-toggle{background:var(--sage);color:white;transform:rotate(45deg)}
+.faq-answer{overflow:hidden;max-height:0;transition:max-height 0.35s ease}
+.faq-answer p{padding-top:0.9rem;font-size:0.9rem;color:var(--stone);line-height:1.85}
+
+/* CONTACT */
+#contact{background:var(--cream)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-detail{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.contact-icon{width:40px;height:40px;border-radius:12px;background:var(--warm);display:flex;align-items:center;justify-content:center}
+.contact-detail span{font-size:0.9rem;color:var(--stone)}
+.contact-detail a{color:var(--bark);text-decoration:none;font-weight:400}
+.contact-detail a:hover{color:var(--accent)}
+.contact-intro-text{color:var(--stone);line-height:1.9;font-size:0.97rem;margin-bottom:2rem}
+.contact-form-box{background:var(--warm);border-radius:24px;padding:2.5rem;border:1px solid var(--mist)}
+.contact-form-box h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--bark);margin-bottom:1.5rem}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:0.4rem;font-weight:400}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:0.8rem 1rem;background:var(--cream);border:1px solid var(--mist);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--bark);outline:none;transition:border-color 0.2s;font-weight:300}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--sage)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-note{font-size:0.78rem;color:var(--stone);margin-top:0.4rem}
+.btn-submit{width:100%;padding:0.95rem;background:var(--bark);color:var(--cream);border:none;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.25s;font-weight:400}
+.btn-submit:hover{background:var(--accent)}
+
+/* FOOTER */
+footer{background:var(--bark);color:var(--mist);text-align:center;padding:2.5rem 3rem}
+footer p{font-size:0.8rem;line-height:1.8}
+footer a{color:var(--sage-lt);text-decoration:none}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:0.12s}
+.reveal-d2{transition-delay:0.24s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:flex}
+  #hero{grid-template-columns:1fr;padding:7rem 1.5rem 4rem;text-align:center;min-height:auto}
+  .hero-image-wrap{order:-1}
+  .headshot-frame{width:260px;height:320px;margin:0 auto}
+  .hero-text p{max-width:100%}
+  .credentials-badge{right:0}
+  .about-grid,.rates-grid,.contact-wrap{grid-template-columns:1fr;gap:2rem}
+  .section-inner{padding:4rem 1.5rem}
+  .what-to-expect{padding:2rem 1.5rem}
+}
+@media(max-width:600px){
+  .expect-steps{grid-template-columns:1fr}
+  .specialties-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()">&#x2715;</button>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#rates" onclick="closeMobile()">Rates</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<nav>
+  <a href="#hero" class="nav-logo">Clare Zavitz Therapy</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#rates">Rates</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="openMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle2"></div>
+  <div class="hero-text">
+    <p class="hero-eyebrow">Registered Social Worker &middot; MSW, RSW</p>
+    <h1>Therapy that <em>meets you<br>where you are.</em></h1>
+    <p>Virtual individual therapy for adults navigating anxiety, grief, burnout, and the many layers of being human. You don't have to carry it alone.</p>
+    <a href="#contact" class="btn-primary">Book a Free 15-Minute Consultation</a>
+    <a href="#about" class="btn-secondary">Learn more</a>
+  </div>
+  <div class="hero-image-wrap">
+    <div style="position:relative;display:inline-block">
+      <div class="headshot-deco"></div>
+      <div class="headshot-deco2"></div>
+      <div class="headshot-frame">
+        <!-- Replace with: <img src="headshot.jpg" alt="Clare Zavitz" /> -->
+        <div class="headshot-placeholder">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="24" r="14" stroke="#4A6E52" stroke-width="1.5"/>
+            <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="#4A6E52" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Your Photo Here</span>
+        </div>
+      </div>
+      <div class="credentials-badge">
+        <div class="badge-dot"></div>
+        <div class="badge-text">
+          <strong>Clare Zavitz</strong>
+          MSW, RSW &middot; Virtual Therapy
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">Therapy rooted in<br><em>compassion</em></h2>
+        <div class="divider"></div>
+        <div class="about-body">
+          <p>Hi, I'm Clare &mdash; a Registered Social Worker with a Master of Social Work (MSW) degree, offering virtual individual therapy to adults across Ontario.</p>
+          <p>My approach is warm, collaborative, and grounded in the belief that healing happens when people feel truly seen and heard. I create a safe, non-judgmental space where you can explore your thoughts and emotions at your own pace.</p>
+          <p>I draw on evidence-based modalities including Cognitive Behavioural Therapy (CBT), Acceptance and Commitment Therapy (ACT), and trauma-informed care, tailoring every session to your unique needs and goals.</p>
+          <p>Whether you're navigating a major life change, working through grief, or simply feeling stuck &mdash; I'm here to help you reconnect with yourself and move forward with clarity and confidence.</p>
+        </div>
+      </div>
+      <div class="about-values reveal reveal-d2">
+        <div class="value-item">
+          <div class="value-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+          </div>
+          <div>
+            <h4>Non-judgmental space</h4>
+            <p>Every part of you is welcome here. I offer a compassionate, confidential environment free of shame or expectation.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5"><circle cx="9" cy="12" r="5"/><circle cx="15" cy="12" r="5"/></svg>
+          </div>
+          <div>
+            <h4>Collaborative process</h4>
+            <p>You are the expert on your own life. We'll work together to set goals and find approaches that feel right for you.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+          </div>
+          <div>
+            <h4>Evidence-informed care</h4>
+            <p>I integrate research-backed therapeutic approaches with genuine human connection for lasting, meaningful change.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 21 12 12 21 3 12"/></svg>
+          </div>
+          <div>
+            <h4>Accessible &amp; virtual</h4>
+            <p>Therapy from wherever you're most comfortable &mdash; all sessions are held online via secure video platform.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="services-intro reveal">
+      <p class="section-label">Services</p>
+      <h2 class="section-title">Individual <em>therapy</em><br>for real life</h2>
+      <div class="divider"></div>
+      <p>Life is complicated. You don't need to have it all figured out before reaching out. I offer individual virtual therapy for adults dealing with a range of challenges &mdash; from everyday stress to deeper emotional wounds.</p>
+    </div>
+    <div class="specialties-grid reveal reveal-d1">
+      <div class="specialty-card">
+        <div class="specialty-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round"><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0-8 0"/><path d="M12 12m-7 0a7 7 0 1 0 14 0a7 7 0 1 0-14 0"/></svg>
+        </div>
+        <h3>Anxiety &amp; Stress</h3>
+        <p>Learn to quiet the mental noise, regulate your nervous system, and build resilience for life's uncertainties.</p>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-7 7c0 4 7 13 7 13s7-9 7-13a7 7 0 0 0-7-7z"/></svg>
+        </div>
+        <h3>Depression</h3>
+        <p>Explore what lies beneath the weight, reconnect with meaning, and take small steady steps toward feeling like yourself again.</p>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round"><path d="M2 12c1.5-3 3-4.5 4.5-4.5S9 9 10.5 9 13.5 6 15 6s3 3 4.5 3S22 7.5 22 7.5"/><path d="M2 17c1.5-3 3-4.5 4.5-4.5S9 14 10.5 14 13.5 11 15 11s3 3 4.5 3S22 12.5 22 12.5"/></svg>
+        </div>
+        <h3>Grief &amp; Loss</h3>
+        <p>Grief takes many forms. Whether you've lost a person, relationship, or identity &mdash; your loss is valid, and you deserve support.</p>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C10 9 7 8 4 9c1 4 4 6 8 3z"/><path d="M12 12c2-3 5-4 8-3-1 4-4 6-8 3z"/></svg>
+        </div>
+        <h3>Life Transitions</h3>
+        <p>Navigating a new chapter &mdash; career change, relationship shift, moving, or identity &mdash; can feel disorienting. Let's find your footing.</p>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round"><path d="M5 20c0 0 2-8 7-8s7 8 7 8"/><path d="M12 12V4"/><path d="M9 7c0 0 1-3 3-3s3 3 3 3"/></svg>
+        </div>
+        <h3>Relationship Issues</h3>
+        <p>Understand your patterns in relationships, improve communication, and build more authentic, fulfilling connections.</p>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <h3>Self-Esteem</h3>
+        <p>Unpack self-criticism and self-doubt, and build a kinder, more grounded relationship with yourself.</p>
+      </div>
+      <div class="specialty-card">
+        <div class="specialty-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4 0 7-3 7-7 0-2.5-1.5-4.5-3-6-1 2-2 2.5-2 2.5S13 8 11 4c-3 3-5 6-5 8 0 4 3 7 6 7z"/></svg>
+        </div>
+        <h3>Work &amp; Burnout</h3>
+        <p>Burnout is more than just being tired. Together we'll explore what's depleting you and find a path back to balance.</p>
+      </div>
+    </div>
+    <div class="what-to-expect reveal reveal-d2">
+      <h3>What to expect</h3>
+      <div class="expect-steps">
+        <div class="step"><div class="step-num">01</div><div class="step-body"><h4>Free Consultation</h4><p>A 15-minute call to see if we're a good fit &mdash; no pressure, no commitment.</p></div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-body"><h4>First Session</h4><p>We'll explore what brought you here and begin building a plan together.</p></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-body"><h4>Ongoing Sessions</h4><p>50-minute sessions at a pace that works for you.</p></div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-body"><h4>Growth &amp; Closure</h4><p>Therapy has a natural rhythm &mdash; we'll celebrate your progress and plan thoughtful endings.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rates">
+  <div class="section-inner">
+    <p class="section-label reveal">Rates</p>
+    <h2 class="section-title reveal reveal-d1">The <em>details</em></h2>
+    <div class="divider reveal reveal-d1"></div>
+    <div class="rates-grid reveal reveal-d2">
+      <div class="rate-card">
+        <div class="rate-card-deco"></div>
+        <h3>Individual Session</h3>
+        <div class="rate-price"><sup>$</sup>160</div>
+        <div class="rate-unit">Per 50-minute session</div>
+        <ul class="rate-features">
+          <li>Secure virtual platform</li>
+          <li>Available across Ontario</li>
+          <li>Free 15-minute consultation</li>
+          <li>Direct billing where available</li>
+        </ul>
+      </div>
+      <div class="rates-info">
+        <div class="info-block">
+          <h4>Insurance &amp; Benefits</h4>
+          <p>Therapy services are often covered under extended health benefits. I recommend checking your plan for "Registered Social Worker (RSW)" coverage. Receipts will be provided for all sessions for reimbursement purposes.</p>
+        </div>
+        <div class="info-block">
+          <h4>Cancellation Policy</h4>
+          <p>I kindly ask for 24 hours notice for cancellations or rescheduling. Late cancellations or no-shows will be subject to the full session fee.</p>
+        </div>
+        <div class="info-block">
+          <h4>Payment</h4>
+          <p>Payment is processed securely through Jane App at the time of session.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-inner">
+    <p class="section-label reveal">FAQ</p>
+    <h2 class="section-title reveal reveal-d1">Your questions, <em>answered</em></h2>
+    <div class="divider reveal reveal-d1"></div>
+    <div class="faq-grid reveal reveal-d2">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">How do virtual sessions work?<div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><p>Sessions take place via a secure, PHIPA-compliant video platform. All you need is a private space, a device with a camera and microphone, and a stable internet connection. I'll send you a link before each session.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">How long does therapy take?<div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><p>It depends on your goals and what you're working through. Some people feel significantly better after a few months; others choose to continue longer. We'll check in regularly and adjust based on how things are going. You're never locked in.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">Is everything I share confidential?<div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><p>Yes. Confidentiality is a cornerstone of therapy. What you share stays between us, with a few legal exceptions &mdash; such as if there's risk of harm to yourself or others, or if records are required by a court. I'll explain these clearly in our first session.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">How do I know if we're a good fit?<div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><p>That's exactly what the free 15-minute consultation is for. There's no pressure and no commitment &mdash; it's simply a chance for us to connect, for you to ask questions, and for both of us to see if working together feels right.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">What's the difference between a social worker and a psychologist?<div class="faq-toggle">+</div></div>
+        <div class="faq-answer"><p>Both can provide therapy, but the training paths differ. As a Registered Social Worker with an MSW, I'm trained in psychotherapy, mental health, and the broader social and environmental factors that influence wellbeing. RSW services are often covered by extended health benefits &mdash; check your plan under "Social Worker" or "RSW."</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-wrap">
+      <div class="reveal">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title">Let's start the <em>conversation</em></h2>
+        <div class="divider"></div>
+        <p class="contact-intro-text">Taking the first step is often the hardest part. Whether you have questions or you're ready to book, I'd love to hear from you. I aim to respond within 1&ndash;2 business days.</p>
+        <div class="contact-detail">
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <span><a href="mailto:hello@clarezavitztherapy.com">hello@clarezavitztherapy.com</a></span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <span>Virtual sessions &mdash; Ontario-wide</span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <span>Responses within 1&ndash;2 business days</span>
+        </div>
+      </div>
+      <div class="contact-form-box reveal reveal-d2">
+        <h3>Send me a message</h3>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group"><label>Your Name</label><input type="text" placeholder="First and last name" required /></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com" required /></div>
+          <div class="form-group">
+            <label>What brings you here?</label>
+            <select>
+              <option value="">Select an option</option>
+              <option>Book a free 15-minute consultation</option>
+              <option>Ask a question about services</option>
+              <option>Inquire about rates</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea placeholder="Share as much or as little as you'd like..."></textarea></div>
+          <p class="form-note" style="margin-bottom:1rem;">This form is for general inquiries. Please do not share sensitive personal health information here.</p>
+          <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    &copy; 2026 Clare Zavitz Therapy &middot; MSW, RSW<br>
+    Virtual therapy for adults across Ontario, Canada.<br>
+    <a href="mailto:hello@clarezavitztherapy.com">hello@clarezavitztherapy.com</a>
+  </p>
+  <p style="margin-top:1rem;font-size:0.72rem;opacity:0.6;">
+    This website is for informational purposes only.
+    If you are in crisis, please contact <a href="https://www.crisisservicescanada.ca" target="_blank">Crisis Services Canada</a> at 1-833-456-4566.
+  </p>
+</footer>
+
+<script>
+function openMobile(){document.getElementById('mobileMenu').classList.add('open');document.body.style.overflow='hidden'}
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''}
+
+function toggleFAQ(el){
+  var item=el.parentElement;
+  var answer=item.querySelector('.faq-answer');
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(i){
+    i.classList.remove('open');
+    i.querySelector('.faq-answer').style.maxHeight='0';
+  });
+  if(!isOpen){item.classList.add('open');answer.style.maxHeight=answer.scrollHeight+'px'}
+}
+
+function handleSubmit(e){
+  e.preventDefault();
+  var btn=e.target.querySelector('.btn-submit');
+  btn.textContent='Message Sent';
+  btn.style.background='var(--sage)';
+  setTimeout(function(){btn.textContent='Send Message';btn.style.background='';e.target.reset()},3000);
+}
+
+// Scroll reveal — falls back gracefully if IntersectionObserver unavailable
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){el.classList.add('visible')});
+    return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
